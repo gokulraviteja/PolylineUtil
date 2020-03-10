@@ -1,0 +1,51 @@
+<!doctype html>
+<html>
+<head>
+      <title>Polyline Util</title>
+<style type="text/css">
+   .container{
+    border: 2px solid black;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+body{
+     background-image: url( static/img/bg4.jpg );
+}
+
+#button1{
+  font-size: 20px;
+  top: 240px;
+  left: 50%;
+  background-color: pink;
+}
+
+</style>
+</head>
+ <body>
+<button id="button1" onclick="CopyToClipboard('div1')">Click to copy</button>
+<button id="button1" > <a href="/">Home</a> </button>
+<div class="container" id="div1">
+         {% for key in latlongs %}
+         {{key}}     
+         <br>
+         {% endfor %}
+</div>         
+<script type="text/javascript">
+function CopyToClipboard(containerid) {
+  if (document.selection) {
+    var range = document.body.createTextRange();
+    range.moveToElementText(document.getElementById(containerid));
+    range.select().createTextRange();
+    document.execCommand("copy");
+
+  } else if (window.getSelection) {
+    var range = document.createRange();
+    range.selectNode(document.getElementById(containerid));
+    window.getSelection().addRange(range);
+    document.execCommand("copy");
+  }
+}
+</script>
+   </body>
+</html>
